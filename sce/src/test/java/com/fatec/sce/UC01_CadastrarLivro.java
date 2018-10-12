@@ -11,12 +11,10 @@ public class UC01_CadastrarLivro {
 	@Test
 	public void CT01CadastrarLivroComDadosValidos() {
 		try {
-			// cenario
-			Livro umLivro = new Livro();
+			//cenario
+			Livro livro;
 			// acao
-			umLivro.setIsbn("121212");
-			umLivro.setTitulo("Engenharia de Softwar");
-			umLivro.setAutor("Pressman");
+			livro = ObtemLivro.comDadosValidos();
 		} catch (RuntimeException e) {
 			// verificacao
 			fail("nao deve falhar");
@@ -25,14 +23,11 @@ public class UC01_CadastrarLivro {
 
 	@Test
 	public void CT02cadastrarLivroComISBN_em_branco() {
-		// cenario
-		Livro livro = new Livro();
-
-		livro.setTitulo("Engenharia de Software");
-		livro.setAutor("Pressman");
 		try {
+			//cenario
+			Livro livro;
 			// acao
-			livro.setIsbn("");
+			livro = ObtemLivro.comISBNInvalido_branco();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
@@ -42,14 +37,11 @@ public class UC01_CadastrarLivro {
 	
 	@Test
 	public void CT03cadastrarLivroComTitulo_em_branco() {
-		// cenario
-		Livro livro = new Livro();
-		
-		livro.setIsbn("123123");
-		livro.setAutor("Pressman");
 		try {
+			//cenario
+			Livro livro;
 			// acao
-			livro.setTitulo("");
+			livro = ObtemLivro.comTituloInvalido_branco();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
@@ -59,14 +51,11 @@ public class UC01_CadastrarLivro {
 	
 	@Test
 	public void CT04cadastrarLivroComAutor_em_branco() {
-		// cenario
-		Livro livro = new Livro();
-		
-		livro.setIsbn("123123");
-		livro.setTitulo("Engenharia de Software");
 		try {
+			//cenario
+			Livro livro;
 			// acao
-			livro.setAutor("");
+			livro = ObtemLivro.comAutorInvalido_branco();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
@@ -76,14 +65,11 @@ public class UC01_CadastrarLivro {
 	
 	@Test
 	public void CT05cadastrarLivroComISBN_nulo() {
-		// cenario
-		Livro livro = new Livro();
-
-		livro.setTitulo("Engenharia de Software");
-		livro.setAutor("Pressman");
 		try {
+			//cenario
+			Livro livro;
 			// acao
-			livro.setIsbn(null);
+			livro = ObtemLivro.comISBNInvalido_nulo();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
@@ -93,14 +79,11 @@ public class UC01_CadastrarLivro {
 	
 	@Test
 	public void CT06cadastrarLivroComTitulo_nulo() {
-		// cenario
-		Livro livro = new Livro();
-		
-		livro.setIsbn("123123");
-		livro.setAutor("Pressman");
 		try {
+			//cenario
+			Livro livro;
 			// acao
-			livro.setTitulo(null);
+			livro = ObtemLivro.comTituloInvalido_nulo();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
@@ -110,14 +93,11 @@ public class UC01_CadastrarLivro {
 	
 	@Test
 	public void CT07cadastrarLivroComAutor_nulo() {
-		// cenario
-		Livro livro = new Livro();
-		
-		livro.setIsbn("123123");
-		livro.setTitulo("Engenharia de Software");
 		try {
+			//cenario
+			Livro livro;
 			// acao
-			livro.setAutor(null);
+			livro = ObtemLivro.comAutorInvalido_nulo();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
