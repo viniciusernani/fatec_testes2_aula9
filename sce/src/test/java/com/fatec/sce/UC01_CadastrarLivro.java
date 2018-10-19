@@ -8,6 +8,9 @@ import org.junit.Test;
 
 public class UC01_CadastrarLivro {
 
+	/**
+	 * Objetivo - Cadastrar um livro com dados válidos
+	**/
 	@Test
 	public void CT01CadastrarLivroComDadosValidos() {
 		try {
@@ -21,6 +24,9 @@ public class UC01_CadastrarLivro {
 		}
 	}
 
+	/**
+	 * Objetivo - Cadastrar um livro com ISBN em branco
+	**/
 	@Test
 	public void CT02cadastrarLivroComISBN_em_branco() {
 		try {
@@ -35,6 +41,9 @@ public class UC01_CadastrarLivro {
 		}
 	}
 	
+	/**
+	 * Objetivo - Cadastrar um livro com título em branco
+	**/
 	@Test
 	public void CT03cadastrarLivroComTitulo_em_branco() {
 		try {
@@ -49,6 +58,9 @@ public class UC01_CadastrarLivro {
 		}
 	}
 	
+	/**
+	 * Objetivo - Cadastrar um livro com autor em branco
+	**/
 	@Test
 	public void CT04cadastrarLivroComAutor_em_branco() {
 		try {
@@ -63,6 +75,9 @@ public class UC01_CadastrarLivro {
 		}
 	}
 	
+	/**
+	 * Objetivo - Cadastrar um livro com ISBN nulo
+	**/
 	@Test
 	public void CT05cadastrarLivroComISBN_nulo() {
 		try {
@@ -77,6 +92,9 @@ public class UC01_CadastrarLivro {
 		}
 	}
 	
+	/**
+	 * Objetivo - Cadastrar um livro com título nulo
+	**/
 	@Test
 	public void CT06cadastrarLivroComTitulo_nulo() {
 		try {
@@ -91,6 +109,9 @@ public class UC01_CadastrarLivro {
 		}
 	}
 	
+	/**
+	 * Objetivo - Cadastrar um livro com autor nulo
+	**/
 	@Test
 	public void CT07cadastrarLivroComAutor_nulo() {
 		try {
@@ -105,6 +126,9 @@ public class UC01_CadastrarLivro {
 		}
 	}
 	
+	/**
+	 * Objetivo - Cadastrar um livro e recuperar seu título
+	**/
 	@Test
 	public void CT08pegarTituloLivro() {
 		// cenario
@@ -116,6 +140,9 @@ public class UC01_CadastrarLivro {
 		assertEquals("Engenharia de Software", umLivro.getTitulo());
 	}
 	
+	/**
+	 * Objetivo - Cadastrar um livro e recuperar seu autor
+	**/
 	@Test
 	public void CT09pegarAutorLivro() {
 		// cenario
@@ -127,6 +154,9 @@ public class UC01_CadastrarLivro {
 		assertEquals("Pressman", umLivro.getAutor());
 	}
 	
+	/**
+	 * Objetivo - Cadastrar um livro e recuperar seu ISBN
+	**/
 	@Test
 	public void CT10pegarISBNLivro() {
 		// cenario

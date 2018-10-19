@@ -14,96 +14,85 @@ public class UC05_CadastrarUsuario {
 			// cenario
 			Usuario usuario = new Usuario();
 			// acao
-			usuario.setRa("121212");
-			usuario.setNome("Orestes Quércia");
+			usuario = ObtemUsuario.comDadosValidos();
 		} catch (RuntimeException e) {
 			// verificacao
 			fail("nao deve falhar");
 		}
 	}
-	
+
 	@Test
 	public void CT02CadastrarUsuarioComRaInvalido() {
-		// cenario
-		Usuario usuario = new Usuario();
-		// acao
-		usuario.setNome("Orestes Quércia");
-		
 		try {
-			usuario.setRa("");
+			// cenario
+			Usuario usuario = new Usuario();
+			// acao
+			usuario = ObtemUsuario.comRaInvalido_branco();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
 			assertEquals("RA inválido", e.getMessage());
 		}
 	}
-	
+
 	@Test
 	public void CT03CadastrarUsuarioComNomeInvalido() {
-		// cenario
-		Usuario usuario = new Usuario();
-		// acao
-		usuario.setRa("123123");
-		
 		try {
-			usuario.setNome("");
+			// cenario
+			Usuario usuario = new Usuario();
+			// acao
+			usuario = ObtemUsuario.comNomeInvalido_branco();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
 			assertEquals("Nome inválido", e.getMessage());
 		}
 	}
-	
+
 	@Test
 	public void CT04CadastrarUsuarioComRaNulo() {
-		// cenario
-		Usuario usuario = new Usuario();
-		// acao
-		usuario.setNome("Orestes Quércia");
-		
 		try {
-			usuario.setRa(null);
+			// cenario
+			Usuario usuario = new Usuario();
+			// acao
+			usuario = ObtemUsuario.comRaInvalido_nulo();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
 			assertEquals("RA inválido", e.getMessage());
 		}
 	}
-	
+
 	@Test
 	public void CT05CadastrarUsuarioComNomeNulo() {
-		// cenario
-		Usuario usuario = new Usuario();
-		// acao
-		usuario.setRa("123123");
-		
 		try {
-			usuario.setNome(null);
+			// cenario
+			Usuario usuario = new Usuario();
+			// acao
+			usuario = ObtemUsuario.comNomeInvalido_nulo();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
 			assertEquals("Nome inválido", e.getMessage());
 		}
 	}
-	
+
 	@Test
 	public void CT06pegarRaUsuario() {
 		// cenario
 		Usuario usuario = new Usuario();
 		// acao
-		usuario.setRa("121212");
-		usuario.setNome("Orestes Quércia");
+		usuario = ObtemUsuario.comDadosValidos();
 		assertEquals("121212", usuario.getRa());
 	}
-	
+
 	@Test
 	public void CT07pegarNomeUsuario() {
 		// cenario
 		Usuario usuario = new Usuario();
 		// acao
-		usuario.setRa("121212");
-		usuario.setNome("Orestes Quércia");
-		assertEquals("Orestes Quércia", usuario.getNome());
+		usuario = ObtemUsuario.comDadosValidos();
+		assertEquals("Augustus Outubrus", usuario.getNome());
 	}
 
 }
