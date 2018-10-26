@@ -1,9 +1,11 @@
 package com.fatec.sce;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 import com.fatec.sce.model.ConfiguraDB;
 import com.fatec.sce.model.FabricaDeConexoes;
+import com.mysql.jdbc.Connection;
 
 public class TestaConexaoComDB {
 	/**
@@ -14,11 +16,15 @@ public class TestaConexaoComDB {
 	@Test
 	public void quandoConectaComOBancoRetornaOK() {
 		// cenario
-		FabricaDeConexoes fabrica;
-		// acao
-		fabrica = new FabricaDeConexoes();
-		// verificacao
-		assertNotNull(fabrica.getConnection());
+		Connection c = null;
+		try {
+			// acao
+			c = new FabricaDeConexoes().getConnection();
+			// verificacao
+			assertNotNull(c);
+		} catch (Exception e) {
+			fail("nao deveria falhar");
+		}
 	}
 
 	/**
@@ -46,7 +52,7 @@ public class TestaConexaoComDB {
 					"java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)");
 		}
 	}
-	
+
 	/**
 	 * Objetivo - verificar o comportamento do sistema na conexao ao DB com senha de
 	 * acesso invalida Pré-condição - a senha cadastrada é "aluno"
@@ -57,7 +63,7 @@ public class TestaConexaoComDB {
 		String url = "jdbc:mysql://localhost:3306/biblioteca";
 		String driver = "com.mysql.jdbc.Driver";
 		String usuario = "root1"; // usuário errado
-		String senha = ""; 
+		String senha = "";
 		FabricaDeConexoes fabricaDeConexoes = null;
 		ConfiguraDB configuraDB = new ConfiguraDB(url, driver, usuario, senha);
 		fabricaDeConexoes = new FabricaDeConexoes(configuraDB);
@@ -72,7 +78,7 @@ public class TestaConexaoComDB {
 					"com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Access denied for user ''@'localhost' to database 'biblioteca'");
 		}
 	}
-	
+
 	/**
 	 * Objetivo - verificar o comportamento do sistema na conexao ao DB com senha de
 	 * acesso invalida Pré-condição - a senha cadastrada é "aluno"
@@ -83,7 +89,7 @@ public class TestaConexaoComDB {
 		String url = "jdbc:mysql://localhost:3306/biblioteca";
 		String driver = "com.mysql.jdbc.Driver1";
 		String usuario = "root"; // usuário errado
-		String senha = ""; 
+		String senha = "";
 		FabricaDeConexoes fabricaDeConexoes = null;
 		ConfiguraDB configuraDB = new ConfiguraDB(url, driver, usuario, senha);
 		fabricaDeConexoes = new FabricaDeConexoes(configuraDB);
@@ -94,11 +100,10 @@ public class TestaConexaoComDB {
 		} catch (Exception e) {
 			// verificacao
 			System.out.println(e.getMessage());
-			assertEquals(e.getMessage(),
-					"java.lang.ClassNotFoundException: com.mysql.jdbc.Driver1");
+			assertEquals(e.getMessage(), "java.lang.ClassNotFoundException: com.mysql.jdbc.Driver1");
 		}
 	}
-	
+
 	/**
 	 * Objetivo - verificar o comportamento do sistema na conexao ao DB com senha de
 	 * acesso invalida Pré-condição - a senha cadastrada é "aluno"
@@ -109,7 +114,7 @@ public class TestaConexaoComDB {
 		String url = "jdbc:mysql://localhost:3308/biblioteca";
 		String driver = "com.mysql.jdbc.Driver";
 		String usuario = "root"; // usuário errado
-		String senha = ""; 
+		String senha = "";
 		FabricaDeConexoes fabricaDeConexoes = null;
 		ConfiguraDB configuraDB = new ConfiguraDB(url, driver, usuario, senha);
 		fabricaDeConexoes = new FabricaDeConexoes(configuraDB);
@@ -121,9 +126,8 @@ public class TestaConexaoComDB {
 			// verificacao
 			System.out.println(e.getMessage());
 			assertEquals(e.getMessage(),
-					"com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure\n" + 
-					"\n" + 
-					"The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.");
+					"com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure\n" + "\n"
+							+ "The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.");
 		}
 	}
 }
