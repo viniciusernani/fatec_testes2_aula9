@@ -5,7 +5,13 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ UC01_CadastrarLivro.class, UC05_CadastrarUsuario.class })
+@SuiteClasses({ 
+	TestaConexaoComDB.class, 
+	UC01_CadastrarLivro.class, 
+	UC02_ConsultarLivro.class, 
+	UC05_CadastrarUsuario.class, 
+	UC09_RegistrarEmprestimoDeLivro.class 
+	})
 public class AllTests {
 
 }

@@ -1,5 +1,6 @@
 package com.fatec.sce;
 
+import com.fatec.sce.model.Livro;
 import com.fatec.sce.model.Usuario;
 
 import static org.junit.Assert.*;
@@ -94,5 +95,109 @@ public class UC05_CadastrarUsuario {
 		usuario = ObtemUsuario.comDadosValidos();
 		assertEquals("Augustus Outubrus", usuario.getNome());
 	}
+	
+	@Test
+	public void CT08compararUsuariosIdenticos() {
+		// cenario
+		Usuario usuario1 = new Usuario();
+		// acao
+		usuario1 = ObtemUsuario.comDadosValidos();
+		assertTrue(usuario1.equals(usuario1));
+	}
+	
+	@Test
+	public void CT09compararUsuariosIguais() {
+		// cenario
+		Usuario usuario1 = new Usuario();
+		Usuario usuario2 = new Usuario();
+		// acao
+		usuario1 = ObtemUsuario.comDadosValidos();
+		usuario2 = ObtemUsuario.comDadosValidos();
+		assertTrue(usuario1.equals(usuario2));
+	}
+	
+	@Test
+	public void CT10compararUsuariosDiferentes() {
+		// cenario
+		Usuario usuario1 = new Usuario();
+		Usuario usuario2 = new Usuario();
+		
+		// acao
+		usuario1 = ObtemUsuario.comDadosValidos();
+		usuario2 = ObtemUsuario.comDadosValidos();
+		usuario2.setNome("Octavius Romanus");
+		
+		assertFalse(usuario1.equals(usuario2));
+	}
+	
+	@Test
+	public void CT11compararUsuarios_comNulo() {
+		// cenario
+		Usuario usuario1 = new Usuario();
+		Usuario usuario2 = new Usuario();
+		
+		// acao
+		usuario1 = ObtemUsuario.comDadosValidos();
+		usuario2 = null;
+		
+		assertFalse(usuario1.equals(usuario2));
+	}
+	
+	@Test
+	public void CT12compararUsuarios_classesDistintas() {
+		// cenario
+		Usuario usuario1 = new Usuario();
+		Livro usuario2 = new Livro();
+		
+		// acao
+		usuario1 = ObtemUsuario.comDadosValidos();
+		usuario2 = ObtemLivro.comDadosValidos();
+		
+		assertFalse(usuario1.equals(usuario2));
+	}
+	
+//	@Test
+//	public void CT13compararUsuarios_nomesNulos() {
+//		// cenario
+//		Usuario usuario1 = new Usuario();
+//		Usuario usuario2 = new Usuario();
+//		// acao
+//		usuario1 = ObtemUsuario.comNomeInvalido_nulo();
+//		usuario2 = ObtemUsuario.comNomeInvalido_nulo();
+//		assertTrue(usuario1.equals(usuario2));
+//	}
+	
+//	@Test
+//	public void CT14compararUsuarios_comparaNomeNuloComNaoNulo() {
+//		// cenario
+//		Usuario usuario1 = new Usuario();
+//		Usuario usuario2 = new Usuario();
+//		// acao
+//		usuario1 = ObtemUsuario.comNomeInvalido_nulo();
+//		usuario2 = ObtemUsuario.comDadosValidos();
+//		assertFalse(usuario1.equals(usuario2));
+//	}
+	
+//	@Test
+//	public void CT15compararUsuarios_raNulos() {
+//		// cenario
+//		Usuario usuario1 = new Usuario();
+//		Usuario usuario2 = new Usuario();
+//		// acao
+//		usuario1 = ObtemUsuario.comRaInvalido_nulo();
+//		usuario2 = ObtemUsuario.comRaInvalido_nulo();
+//		assertTrue(usuario1.equals(usuario2));
+//	}
+	
+//	@Test
+//	public void CT16compararUsuarios_comparaRaNuloComNaoNulo() {
+//		// cenario
+//		Usuario usuario1 = new Usuario();
+//		Usuario usuario2 = new Usuario();
+//		// acao
+//		usuario1 = ObtemUsuario.comRaInvalido_nulo();
+//		usuario2 = ObtemUsuario.comDadosValidos();
+//		assertFalse(usuario1.equals(usuario2));
+//	}
 
 }
